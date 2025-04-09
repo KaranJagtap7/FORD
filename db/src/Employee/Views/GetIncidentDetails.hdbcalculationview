@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="GetIncidentDetails" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
+<descriptions defaultDescription="GetIncidentDetails"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="Syn_INC_T_INCDT">
+    <resourceUri>Syn_INC_T_INCDT</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="INCID"/>
+      <viewAttribute id="REBEH"/>
+      <viewAttribute id="INCNM"/>
+      <viewAttribute id="INCDT"/>
+      <viewAttribute id="ICRTM"/>
+      <viewAttribute id="INCTM"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Syn_INC_T_INCDT"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+  <attributes>
+    <attribute id="INCNM" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Incident id in inc-year-001 format"/>
+      <keyMapping columnObjectName="Projection_1" columnName="INCNM"/>
+    </attribute>
+    <attribute id="INCDT" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date and Time Of Incident-Date"/>
+      <keyMapping columnObjectName="Projection_1" columnName="INCDT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="INCID" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Unique id"/>
+      <measureMapping columnObjectName="Projection_1" columnName="INCID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="REBEH" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="REBEH"/>
+      <measureMapping columnObjectName="Projection_1" columnName="REBEH"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="ICRTM" order="5" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="ICRTM"/>
+      <measureMapping columnObjectName="Projection_1" columnName="ICRTM"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="INCTM" order="6" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Date and Time Of Incident-Time"/>
+      <measureMapping columnObjectName="Projection_1" columnName="INCTM"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+
+
+  <filter>&quot;INCDT&quot;='2025-04-08'</filter>
+
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="105" y="251"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
