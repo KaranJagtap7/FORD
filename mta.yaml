@@ -24,7 +24,7 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: FORDC-db
+      - name: FORDC
 
   - name: FORDC-db-deployer
     type: hdb
@@ -32,10 +32,10 @@ modules:
     parameters:
       buildpack: nodejs_buildpack
     requires:
-      - name: FORDC-db
+      - name: FORDC
 
 resources:
-  - name: FORDC-db
+  - name: FORDC
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
