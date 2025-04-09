@@ -1,8 +1,32 @@
 {
-  "syn_INC_M_BDPRT": {
+  "Syn_INC_M_BDPRT": {
     "target": {
       "object": "INC_M_BDPRT",
-      "schema": "FORDC"
+      "schema" : "FORDC"
+    }
+  },
+  "Syn_INC_M_MSTDT": {
+    "target": {
+      "object": "INC_M_MSTDT",
+      "schema" : "FORDC"
+    }
+  },
+  "Syn_INC_T_BDPRT": {
+    "target": {
+      "object": "INC_T_BDPRT",
+      "schema" : "FORDC"
+    }
+  },
+  "Syn_INC_T_INCDT": {
+    "target": {
+      "object": "INC_T_INCDT",
+      "schema" : "FORDC"
+    }
+  },
+  "Syn_INC_T_NRMIS": {
+    "target": {
+      "object": "INC_T_NRMIS",
+      "schema" : "FORDC"
     }
   }
 }
