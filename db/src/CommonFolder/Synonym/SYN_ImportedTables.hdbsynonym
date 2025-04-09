@@ -1,0 +1,8 @@
+{
+  "syn_INC_M_BDPRT": {
+    "target": {
+      "object": "INC_M_BDPRT",
+      "schema": "FORDC"
+    }
+  }
+}
