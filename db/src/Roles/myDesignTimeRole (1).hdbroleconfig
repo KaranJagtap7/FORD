@@ -1,0 +1,7 @@
+{
+  "AccessRole#": {
+    "Ref1": {
+      "schema": "FORDC"
+    }
+  }
+}
