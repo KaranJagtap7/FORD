@@ -27,13 +27,5 @@
         ]
       }
     ]
-    // "schema_analytic_privileges": [
-    //   {
-    //     "schema_reference": "Ref1",
-    //     "privileges_with_grant_option": [
-    //       "AN_EmpIncident"
-    //     ]
-    //   }
-    // ]
   }
 }
