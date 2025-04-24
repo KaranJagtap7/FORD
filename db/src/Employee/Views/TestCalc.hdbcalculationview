@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="TestCalc" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="TestCalc"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="Syn_INC_T_INCDT">
+    <resourceUri>Syn_INC_T_INCDT</resourceUri>
+  </DataSource>
+  <DataSource id="Syn_INC_T_BDPRT">
+    <resourceUri>Syn_INC_T_BDPRT</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner" optimizeJoinColumns="false">
+    <viewAttributes>
+      <viewAttribute id="BDPRT" aggregationType="sum"/>
+      <viewAttribute id="NAINJ" aggregationType="sum"/>
+      <viewAttribute id="ISIDE" aggregationType="sum"/>
+      <viewAttribute id="BDPID" aggregationType="sum"/>
+      <viewAttribute id="INCID" aggregationType="sum"/>
+      <viewAttribute id="INCDT"/>
+      <viewAttribute id="INCTM" aggregationType="min"/>
+      <viewAttribute id="INCNM"/>
+      <viewAttribute id="RGNOT" aggregationType="sum"/>
+      <viewAttribute id="CRTBY"/>
+      <viewAttribute id="CRTBY_1"/>
+      <viewAttribute hidden="true" id="JOIN$INCID$INCID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Syn_INC_T_INCDT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCID" source="INCID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCDT" source="INCDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCTM" source="INCTM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCNM" source="INCNM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RGNOT" source="RGNOT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRTBY_1" source="CRTBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$INCID$INCID" source="INCID"/>
+    </input>
+    <input node="Syn_INC_T_BDPRT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BDPRT" source="BDPRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAINJ" source="NAINJ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ISIDE" source="ISIDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BDPID" source="BDPID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRTBY" source="CRTBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$INCID$INCID" source="INCID"/>
+    </input>
+    <joinAttribute name="JOIN$INCID$INCID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="INCDT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date and Time Of Incident-Date"/>
+      <keyMapping columnObjectName="Join_1" columnName="INCDT"/>
+    </attribute>
+    <attribute id="INCNM" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Incident id in inc-year-001 format"/>
+      <keyMapping columnObjectName="Join_1" columnName="INCNM"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="BDPRT" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Body Parts"/>
+      <measureMapping columnObjectName="Join_1" columnName="BDPRT"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="NAINJ" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Nature Of injury"/>
+      <measureMapping columnObjectName="Join_1" columnName="NAINJ"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="ISIDE" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Body Part Side"/>
+      <measureMapping columnObjectName="Join_1" columnName="ISIDE"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="BDPID" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Unique id"/>
+      <measureMapping columnObjectName="Join_1" columnName="BDPID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="INCID" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Unique id"/>
+      <measureMapping columnObjectName="Join_1" columnName="INCID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="INCTM" order="7" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Date and Time Of Incident-Time"/>
+      <measureMapping columnObjectName="Join_1" columnName="INCTM"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="RGNOT" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RGNOT"/>
+      <measureMapping columnObjectName="Join_1" columnName="RGNOT"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="202"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Syn_INC_T_INCDT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="16" y="16"/>
+      <rectangleSize width="170"/>
+    </shape>
+    <shape modelObjectName="Syn_INC_T_BDPRT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="250" y="480"/>
+      <rectangleSize width="175"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
